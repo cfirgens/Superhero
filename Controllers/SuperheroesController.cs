@@ -31,7 +31,7 @@ namespace Superhero_Project.Controllers
         // GET: Superheroes/Create
         public ActionResult Create()
         {
-            Superhero superhero = new Superhero();
+            //Superhero superhero = new Superhero();
 
             return View();
         }
@@ -97,9 +97,10 @@ namespace Superhero_Project.Controllers
             try
             {
                 // TODO: Add delete logic here
-                context.Superheroes.Remove(superhero);
+                var superheroDelete = context.Superheroes.Where(s => s.Id == id).FirstOrDefault();
+                context.Superheroes.Remove(superheroDelete);
                 context.SaveChanges();
-                return RedirectToAction("Index", "Superheroes");
+                return RedirectToAction("Index");
             }
             catch
             {
