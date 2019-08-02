@@ -56,17 +56,25 @@ namespace Superhero_Project.Controllers
         // GET: Superheroes/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var superhero = context.Superheroes.Where(s => s.Id == id).FirstOrDefault();
+            return View(superhero);
         }
 
         // POST: Superheroes/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Superhero superhero)
         {
             try
             {
                 // TODO: Add update logic here
-
+                Superhero editedSuperhero = context.Superheroes.Where(s => s.Id == id).FirstOrDefault();
+                editedSuperhero.Id = superhero.Id;
+                editedSuperhero.PrimaryAbility = superhero.PrimaryAbility;
+                editedSuperhero.SecondaryAbility = superhero.SecondaryAbility;
+                editedSuperhero.CatchPhrase = superhero.CatchPhrase;
+                editedSuperhero.SuperheroName = superhero.SuperheroName;
+                editedSuperhero.AlterEgo = superhero.AlterEgo;
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
