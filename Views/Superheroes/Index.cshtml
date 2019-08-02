@@ -6,7 +6,7 @@
 
 <div align="right">
     <img src="~/images/superman.jpg" alt="superman" style="height:500px" />
-</div>
+</div><br /><br />
 <div align="center">
     <h2> Chris' devCodeCamp List of Superheroes</h2>
 </div>
@@ -52,7 +52,7 @@
             @Html.DisplayFor(modelItem => item.CatchPhrase)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Edit", "Edit", new {id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
